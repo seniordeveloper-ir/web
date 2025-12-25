@@ -38,10 +38,12 @@
   }
 
   // Crisp drawing on HiDPI
+  let lastCssH = 200;
   function fitCanvas() {
     const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
     const cssW = canvas.clientWidth || canvas.width;
     const cssH = Math.round(cssW * (200 / 640));
+    lastCssH = cssH;
     canvas.style.height = `${cssH}px`;
 
     canvas.width = Math.floor(cssW * dpr);
@@ -60,7 +62,11 @@
   // World units are in CSS pixels (not device pixels)
   const world = {
     w: () => canvas.clientWidth || 640,
-    h: () => canvas.clientHeight || 200,
+    h: () => {
+      const rectH = canvas.getBoundingClientRect?.().height;
+      if (Number.isFinite(rectH) && rectH > 0) return rectH;
+      return lastCssH || 200;
+    },
   };
 
   const groundPad = 22;
@@ -145,7 +151,7 @@
   }
 
   function groundY() {
-    return (canvas.clientHeight || 200) - groundPad;
+    return world.h() - groundPad;
   }
 
   function rectsOverlap(a, b) {
@@ -262,7 +268,7 @@
 
   function draw() {
     const w = world.w();
-    const h = canvas.clientHeight || 200;
+    const h = world.h();
 
     ctx.clearRect(0, 0, w, h);
 

@@ -44,7 +44,7 @@ body{
   min-height: 100%;
   display: grid;
   place-items: center;
-  padding: 28px 16px;
+  padding: calc(28px + env(safe-area-inset-top)) calc(16px + env(safe-area-inset-right)) calc(28px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
 }
 
 .card{
@@ -142,6 +142,10 @@ body{
   display: block;
   width: 100%;
   height: auto;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .game__bottom{
@@ -165,7 +169,8 @@ body{
   background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   border-radius: 12px;
-  padding: 9px 12px;
+  padding: 10px 14px;
+  min-height: 44px;
   font-family: inherit;
   font-weight: 700;
   font-size: 12.5px;
@@ -196,4 +201,40 @@ body{
 
 @media (prefers-reduced-motion: reduce){
   .game__btn{ transition: none; }
+}
+
+@media (max-width: 480px){
+  .wrap{ padding: calc(18px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) calc(12px + env(safe-area-inset-left)); }
+
+  .card{
+    border-radius: 16px;
+    padding: 20px 16px 14px;
+  }
+
+  .badge{ font-size: 12px; }
+
+  .subtitle{
+    font-size: 14.5px;
+    line-height: 1.85;
+  }
+
+  .game__top{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .game__stats{
+    white-space: normal;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+  }
+
+  .game__bottom{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game__help{ font-size: 12px; }
+
+  .game__btn{ width: 100%; }
 }
