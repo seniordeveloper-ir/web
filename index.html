@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+
+    <title>Senior Developer | در حال ساخت</title>
+    <meta name="description" content="وب‌سایت Senior Developer در حال ساخت است. به‌زودی برمی‌گردیم." />
+
+    <!-- Vazirmatn (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap" aria-label="صفحه در حال ساخت">
+      <section class="card" role="status" aria-live="polite">
+        <div class="badge">Senior Developer</div>
+
+        <h1 class="title">در حال ساخت</h1>
+        <p class="subtitle">
+          داریم با دقت و وسواس (از نوع خوبش) روی نسخه‌ی جدید کار می‌کنیم.
+          <br />
+          خیلی زود برمی‌گردیم.
+        </p>
+
+        <p class="hint">اگر این صفحه را می‌بینید یعنی هنوز همه‌چیز آماده‌ی انتشار نیست.</p>
+
+        <section class="game" aria-label="بازی">
+          <header class="game__top">
+            <div class="game__label">بازی</div>
+            <div class="game__stats" aria-label="امتیاز بازی">
+              <span>امتیاز: <strong id="score">0</strong></span>
+              <span class="game__sep" aria-hidden="true">•</span>
+              <span>بهترین: <strong id="best">0</strong></span>
+            </div>
+          </header>
+
+          <div class="game__frame">
+            <canvas
+              id="runner"
+              class="game__canvas"
+              width="640"
+              height="200"
+              aria-label="بازی دونده"
+            ></canvas>
+          </div>
+
+          <div class="game__bottom">
+            <p class="game__help">
+              پرش: Space / ↑ / کلیک یا لمس — شروع دوباره: R
+            </p>
+            <button class="game__btn" id="restart" type="button">شروع دوباره</button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <span>© <span id="year"></span> Senior Developer</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="./game.js" defer></script>
+  </body>
+</html>
